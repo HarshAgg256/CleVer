@@ -1,12 +1,6 @@
 # CleVer
 A Client-Server based Architecture for Graph Database System.
 
-Here's an expanded version of the README file with more technical details:
-
----
-
-# Distributed Graph Database System
-
 ## Overview
 
 The Distributed Graph Database System is designed to manage and manipulate unweighted, undirected graphs in a distributed environment. This system incorporates a load balancer, primary server, secondary servers, a cleanup process, and multiple clients to handle various graph operations efficiently. It employs inter-process communication, multithreading, and advanced synchronization mechanisms to ensure robust performance and data integrity.
@@ -70,16 +64,18 @@ The system employs several threading and synchronization constructs to ensure ef
 
 ## Compilation and Execution
 
+Open atleast 6 terminals from the cloned project directory on an Ubuntu 22.04 system and enter the compilation commands of each process in separate terminals.  
+
 ### Compilation
 
 Compile all the components using the following commands:
 
 ```bash
-gcc -o load_balancer load_balancer.c -lpthread
-gcc -o primary_server primary_server.c -lpthread
-gcc -o secondary_server secondary_server.c -lpthread
-gcc -o cleanup cleanup.c -lpthread
-gcc -o client client.c -lpthread
+gcc -o load_balancer load_balancer.c
+gcc -o primary_server primary_server.c 
+gcc -o secondary_server secondary_server.c 
+gcc -o cleanup cleanup.c
+gcc -o client client.c
 ```
 
 ### Execution
@@ -88,22 +84,22 @@ Run the processes in the following order:
 
 1. **Start the Load Balancer**:
    ```bash
-   ./load_balancer &
+   ./load_balancer
    ```
 
 2. **Start the Primary Server**:
    ```bash
-   ./primary_server &
+   ./primary_server
    ```
 
 3. **Start the Secondary Servers** (run this command twice for two instances):
    ```bash
-   ./secondary_server &
+   ./secondary_server
    ```
 
 4. **Start the Cleanup Process**:
    ```bash
-   ./cleanup &
+   ./cleanup
    ```
 
 5. **Run the Client**:
@@ -113,27 +109,11 @@ Run the processes in the following order:
 
 ### Client Input
 
-On the client side, users should enter commands in the following format:
+On the client side, users should follow and answer the prompts correctly to avoid any undesired behavior. 
+For `Sequence number`, give a  unique value from 1 to 100 everytime the client wants to request something.
+For `Operation number`, give any value from 1-4 depending upon the menu options.
+For `File name`, specify a name of the form G<no>.txt where <no> can be any number.
 
-- **Add a New Graph**:
-  ```
-  add Gx.txt
-  ```
-
-- **Modify an Existing Graph**:
-  ```
-  modify Gx.txt
-  ```
-
-- **Perform DFS**:
-  ```
-  dfs Gx.txt
-  ```
-
-- **Perform BFS**:
-  ```
-  bfs Gx.txt
-  ```
 
 ## Expected Result Format
 
@@ -141,25 +121,3 @@ On the client side, users should enter commands in the following format:
 - **Modify Graph**: A confirmation message indicating successful modification of the graph.
 - **DFS/BFS Result**: The traversal order of the nodes in the graph, returned in a readable format.
 
-## Demo and Evaluation
-
-- The project will be demonstrated on Ubuntu 22.04 systems.
-- Each group member should have a thorough understanding of the implementation and be able to explain their contributions.
-- Demos will be conducted in-person, and individual evaluations will be based on each member's understanding and contributions to the project.
-
-## Submission Guidelines
-
-- Submit a zipped file containing all relevant C programs and a text file with group member details.
-- The zipped file should be named `GroupX_A2.zip` (X is the group number).
-
-## Plagiarism Policy
-
-Strict adherence to the plagiarism policy is maintained. Any form of code lifting or intellectual property theft will result in severe penalties, including disqualification and academic disciplinary action.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
----
-
-Feel free to adjust this README file further to match your project's specifics or personal preferences.
